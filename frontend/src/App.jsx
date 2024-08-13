@@ -1,13 +1,9 @@
-import './App.css'
+import HomepgWrapper from './landing/home/HomepgWrapper'
 
 function App() {
 
   return (
-    
-    
-        <div>
-          <h1>Hie</h1>
-        </div>
+    <HomepgWrapper/>
   )
 
         
