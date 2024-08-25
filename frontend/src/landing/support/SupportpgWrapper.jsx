@@ -1,8 +1,13 @@
 import React from 'react';
+import Hero from './Hero';
+import RaiseTkt from './RaiseTkt';
 
 function SupportpgWrapper() {
     return ( 
-        <h1>SupportpgWrapper</h1>
+        <>
+            <Hero></Hero>
+            <RaiseTkt></RaiseTkt>
+        </>
      );
 }
 
