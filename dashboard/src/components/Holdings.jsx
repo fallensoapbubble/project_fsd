@@ -1,10 +1,25 @@
 import React from "react";
-import { holdings } from "../data/data";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 function Holdings() {
+  const [allHoldings, setAllHoldings] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:3002/allHoldings")
+    .then((res) => {
+
+      // console.log(res);
+      setAllHoldings(res.data);
+    })
+    .catch((err)=>{
+      console.log("Error is ",err);
+    });
+
+  }, []);
   return (
     <>
-      <h3 className="title">Holdings ({holdings.length})</h3>
+      <h3 className="title">Holdings ({allHoldings.length})</h3>
 
       <div className="order-table">
         <table>
@@ -19,9 +34,9 @@ function Holdings() {
             <th>Day chg.</th>
           </tr>
 
-          {holdings.map((stock, idx) => {
+          {allHoldings.map((stock, idx) => {
             const currVal = stock.price * stock.qty;
-            const total=currVal - stock.avg * stock.qty;
+            const total = currVal - stock.avg * stock.qty;
             const isProfit = total >= 0;
             const profitClass = isProfit ? "profit" : "loss";
             const dayClass = stock.isLoss ? "loss" : "profit";
@@ -33,9 +48,7 @@ function Holdings() {
                 <td>{stock.avg.toFixed(2)}</td>
                 <td>{stock.price.toFixed(2)}</td>
                 <td>{currVal.toFixed(2)}</td>
-                <td className={profitClass}>
-                  {(total).toFixed(2)}
-                </td>
+                <td className={profitClass}>{total.toFixed(2)}</td>
                 <td className={profitClass}>{stock.net}</td>
                 <td className={dayClass}>{stock.day}</td>
               </tr>
@@ -62,7 +75,6 @@ function Holdings() {
           <p>P&L</p>
         </div>
       </div>
-
     </>
   );
 }
