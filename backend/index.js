@@ -55,3 +55,27 @@ app.get("/", (req, res) => {
 });
 
 
+
+
+const OrdersMdl = require("./models/OrderModel.js");
+
+app.get("/allOrders", async (req, res) => {
+  var allOrders = await OrdersMdl.find({});
+  res.json(allOrders);
+});
+
+app.post("/newOrder",async (req,res)=>{
+  let newOrder = new OrdersMdl({
+    name: req.body.name,
+    qty: req.body.qty,
+    price: req.body.price,
+    mode: req.body.mode
+  });
+
+  await newOrder.save();
+
+  res.send("Order recieved");
+
+});
+
+
