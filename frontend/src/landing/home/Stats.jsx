@@ -3,7 +3,7 @@ import React from "react";
 function Stats() {
   return (
     <div className="container mb-5">
-      <div className="row">
+      <div className="row" style={{ animation: "fadeInUp 5s ease-in-out" }}>
         <div className="col-6" style={{ padding: "1rem" }}>
           <h1 style={{ marginBottom: "2rem" }}>Trust with confidence</h1>
           <h2>Customer-first always</h2>
@@ -32,7 +32,10 @@ function Stats() {
             money.
           </p>
         </div>
-        <div className="col-6 text-center">
+        <div
+          className="col-6 text-center"
+          style={{ animation: "zoomIn 5s ease-in-out" }}
+        >
           <img
             src="../../../public/images/ecosystem.png"
             style={{ width: "100%" }}
@@ -47,6 +50,18 @@ function Stats() {
           <a href="">Try Kite</a>
         </div>
       </div>
+
+      <style>{`
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(100%); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes zoomIn {
+          from { transform: scale(0); opacity: 0; }
+          to { transform: scale(1); opacity: 1); }
+        }
+      `}</style>
     </div>
   );
 }

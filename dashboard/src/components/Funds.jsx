@@ -9,9 +9,9 @@ const Funds = () => {
         <Link className="btn btn-green">Add funds</Link>
         <Link className="btn btn-blue">Withdraw</Link>
       </div>
-
+      <br />
       <div className="row">
-        <div className="col">
+        <div className="col-8" style={{width:"80%"}}>
           <span>
             <p>Equity</p>
           </span>
@@ -74,11 +74,13 @@ const Funds = () => {
           </div>
         </div>
 
-        <div className="col">
-          <div className="commodity">
-            <p>You don't have a commodity account</p>
-            <Link className="btn btn-blue">Open Account</Link>
-          </div>
+        <div className="col-4"></div>
+      </div>
+      <div className="row">
+        <div className="commodity">
+          <p>You don't have a commodity account</p>
+
+          <Link className="btn btn-blue">Open Account</Link>
         </div>
       </div>
     </>

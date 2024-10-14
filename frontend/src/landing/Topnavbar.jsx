@@ -25,47 +25,34 @@ function Topnavbar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <Link
-                className="nav-link active"
-                aria-current="page"
-                to="/signup"
-              >
-                Signup
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link active" to="/about">
-                About
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link active" to="/products">
-                Products
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link active" to="/pricing">
-                Pricing
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link active" to="/support">
-                Support
-              </Link>
-            </li>
+            {["signup", "about", "products", "pricing", "support", "info"].map((item, index) => (
+              <li className="nav-item" key={index}>
+                <Link
+                  className="nav-link"
+                  to={`/${item}`}
+                  style={{
+                    position: "relative",
+                    padding: "10px 15px",
+                    transition: "color 0.3s, background-color 0.3s, transform 0.3s",
+                    color: "#333",
+                    textDecoration: "none"
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.color = "#007bff";
+                    e.currentTarget.style.backgroundColor = "#f8f9fa";
+                    e.currentTarget.style.transform = "scale(1.05)";
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.color = "#333";
+                    e.currentTarget.style.backgroundColor = "transparent";
+                    e.currentTarget.style.transform = "scale(1)";
+                  }}
+                >
+                  {item.charAt(0).toUpperCase() + item.slice(1)}
+                </Link>
+              </li>
+            ))}
           </ul>
-          <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
         </div>
       </div>
     </nav>
