@@ -22,6 +22,7 @@ function Team() {
             style={{
               borderRadius: "100%",
               animation: "zoomIn 1.5s ease-in-out",
+              margin: "3rem"
             }}
           />
         </div>
@@ -31,7 +32,7 @@ function Team() {
             animation: "slideInUp 2s ease-in-out",
           }}
         >
-          words
+          Backend Developer
         </div>
       </div>
 
@@ -43,6 +44,7 @@ function Team() {
             style={{
               borderRadius: "100%",
               animation: "zoomIn 1.5s ease-in-out",
+              margin: "3rem"
             }}
           />
         </div>
@@ -52,7 +54,7 @@ function Team() {
             animation: "slideInUp 2s ease-in-out",
           }}
         >
-          words
+          Frontend Developer
         </div>
       </div>
 
@@ -64,6 +66,7 @@ function Team() {
             style={{
               borderRadius: "100%",
               animation: "zoomIn 1.5s ease-in-out",
+              margin: "3rem"
             }}
           />
         </div>
@@ -73,7 +76,7 @@ function Team() {
             animation: "slideInUp 2s ease-in-out",
           }}
         >
-          words
+          Dashboard Developer
         </div>
       </div>
 

@@ -21,7 +21,7 @@ function OpenAcc() {
             transition: "font-size 0.3s ease-in-out, color 0.3s ease-in-out",
           }}
         >
-          Open a Zerodha account
+          Open a StockVerse account
         </h1>
         <p
           style={{

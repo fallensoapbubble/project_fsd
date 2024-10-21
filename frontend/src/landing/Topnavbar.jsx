@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// import z from "../../public/vite.svg"
 
 function Topnavbar() {
   return (
@@ -7,7 +8,7 @@ function Topnavbar() {
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           <img
-            src="../../../public/images/logo.svg"
+            src="../../../public/images/stk.jpg"
             style={{ width: "30%" }}
             alt=""
           />

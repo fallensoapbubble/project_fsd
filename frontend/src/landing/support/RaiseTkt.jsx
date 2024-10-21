@@ -44,7 +44,7 @@ function RaiseTkt() {
           style={{ fontSize: "0.5", lineHeight: "2" }}
         >
           <h4>
-            <i class="fa fa-user-o" aria-hidden="true"></i> Your Zerodha Account
+            <i class="fa fa-user-o" aria-hidden="true"></i> Your StockVerse Account
           </h4>
 
           <ol>

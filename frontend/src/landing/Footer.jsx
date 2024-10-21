@@ -11,7 +11,7 @@ function Footer() {
             className="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none"
           >
             <img
-              src="../../../public/images/logo.svg"
+              src="../../../public/images/stk.jpg"
               style={{ width: "50%" }}
               alt=""
             />

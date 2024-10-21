@@ -19,8 +19,6 @@ const BuyActionWindow = ({ uid }) => {
     });
     // console.log(uid,stockPrice,stockQuantity);
     closeBuyWindow();
-
-
   
 };
 

@@ -7,10 +7,6 @@ import DoughnutChart from "./DoughnoutChart";
 const labels = watchlist.map((subArray) => subArray["name"]);
 
 function WatchList() {
-
-
-
-  
   const data = {
     labels,
     datasets: [
@@ -128,7 +124,15 @@ const WatchListActions = ({ uid }) => {
           arrow
           TransitionComponent={Grow}
         >
-          <button className="sell">Sell</button>
+          <button
+            className="sell"
+            onDoubleClick={() => {
+              openBuyWindow();
+              setUID(uid);
+            }}
+          >
+            Sell
+          </button>
         </Tooltip>
         <Tooltip
           title="Analytics(A)"

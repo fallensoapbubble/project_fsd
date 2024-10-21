@@ -46,9 +46,12 @@ const Orders = () => {
               }}
             >
               <h3>{stock.name}</h3>
-              <h4>QUANTITY : {stock.qty}</h4>
-              <h4>COST : {stock.price}</h4>
+              <h4>Quantity : {stock.qty}</h4>
+              <h4>Bid Price : {stock.price}</h4>
+              <h4>Total Cost : {stock.price*stock.qty}</h4>
+             
             </div>
+           
           );
         })}
       </div>
