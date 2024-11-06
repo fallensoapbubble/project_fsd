@@ -4,30 +4,29 @@ import axios from "axios";
 
 function Positions() {
 
-  const [allPositions, setAllPositions] = useState([]);
+  const [allOrders, setAllOrders] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3002/allPositions")
-    .then((res) => {
-
-      // console.log(res);
-      setAllPositions(res.data);
-    })
-    .catch((err)=>{
-      console.log("Error is ",err);
-    });
-
+    axios
+      .get("http://localhost:3002/allOrders")
+      .then((res) => {
+        setAllOrders(res.data);
+        // console.log(res.data);
+      })
+      .catch((err) => {
+        console.log("Error is ", err);
+      });
   }, []);
 
   return ( 
     <>
-      <h3 className="title">Positions ({allPositions.length})</h3>
+      <h3 className="title">Positions ({allOrders.length})</h3>
 
       <div className="order-table">
         <table>
           <tr>
-            <th>Product</th>
-            <th>Instrument</th>
+    
+            <th>Name</th>
             <th>Qty.</th>
             <th>Avg.</th>
             <th>LTP</th>
@@ -35,27 +34,36 @@ function Positions() {
             <th>Chg.</th>
           </tr>
 
-          {allPositions.map((stock, index) => {
-            const currVal = stock.price * stock.qty;
-            const total=currVal - stock.avg * stock.qty;
-            const isProfit = total >= 0;
-            const profitClass = isProfit ? "profit" : "loss";
-            const dayClass = stock.isLoss ? "loss" : "profit";
+          {Object.entries(
+      allOrders.reduce((acc, stock) => {
+        // Grouping stocks by name
+        if (!acc[stock.name]) {
+          acc[stock.name] = { ...stock, totalQty: stock.qty };
+        } else {
+          acc[stock.name].qty += stock.mode === "sell" ? stock.qty : -stock.qty;
+          acc[stock.name].totalQty += stock.mode === "sell" ? stock.qty : -stock.qty;
+        }
+        return acc;
+      }, {})
+    ).map(([name, stock], index) => {
+      const currVal = stock.price * stock.qty;
+      const avgCost = stock.price; // Assuming price is average cost per unit
+      const total = currVal - avgCost * stock.qty*Math.random() * 100 - 1;
+      const isProfit = total >= 0;
+      const profitClass = isProfit ? "profit" : "loss";
+      const dayClass = stock.isLoss ? "loss" : "profit";
 
-            return (
-              <tr key={index}>
-                <td>{stock.product}</td>
-                <td>{stock.name}</td>
-                <td>{stock.qty}</td>
-                <td>{stock.avg.toFixed(2)}</td>
-                <td>{stock.price.toFixed(2)}</td>
-                <td className={profitClass}>
-                  {(total).toFixed(2)}
-                </td>
-                <td className={dayClass}>{stock.day}</td>
-              </tr>
-            );
-          })}
+      return (
+        <tr key={index}>
+          <td>{name}</td>
+          <td>{stock.totalQty}</td>
+          <td>{avgCost.toFixed(2)}</td>
+          <td>{stock.price.toFixed(2)}</td>
+          <td className={profitClass}>{total.toFixed(2)}</td>
+          <td className={dayClass}>{stock.price.toFixed(2)}</td>
+        </tr>
+      );
+    })}
         </table>
       </div>
     </>

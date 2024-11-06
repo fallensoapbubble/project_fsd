@@ -43,6 +43,8 @@ app.get("/allHoldings", async (req, res) => {
   res.json(allHoldings);
 });
 
+
+
 app.get("/allPositions", async (req, res) => {
   const { positions } = await require("./data.js");
   const PositionsMdl = await require("../backend/models/PositionsModel.js");

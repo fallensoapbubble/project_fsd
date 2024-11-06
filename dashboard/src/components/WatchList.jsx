@@ -98,6 +98,8 @@ const WatchListItem = ({ stockvar }) => {
 const WatchListActions = ({ uid }) => {
   const { openBuyWindow } = useContext(GeneralContext);
   const { setUID } = useContext(GeneralContext);
+  const { openSellWindow } = useContext(GeneralContext);
+  
 
   return (
     <span className="actions">
@@ -127,7 +129,7 @@ const WatchListActions = ({ uid }) => {
           <button
             className="sell"
             onDoubleClick={() => {
-              openBuyWindow();
+              openSellWindow(uid);
               setUID(uid);
             }}
           >
